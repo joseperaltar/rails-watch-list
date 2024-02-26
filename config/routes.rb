@@ -13,7 +13,8 @@ Rails.application.routes.draw do
   get '/', to: 'pages#home', as: :home
 
   resources :lists do
-    resources :bookmarks, only: [:index, :new, :create]
+    resources :bookmarks
+    resources :reviews, only: [:create]
   end
 
   resources :bookmarks, only: [:destroy]
