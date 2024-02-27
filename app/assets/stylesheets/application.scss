@@ -21,6 +21,18 @@ $purple: #36119b;
   background-color: $purple;
 }
 
-.overlay {
-  width: 200px;
+.list_banner {
+  height: 200px;
+  background-position: center;
+  background-size: cover;
+  box-shadow: 2px 2px 10px black;
+}
+
+.appear {
+  opacity: 0%;
+  transition: .2s ease all;
+}
+
+.list_banner_container:hover .appear {
+  opacity: 100%;
 }

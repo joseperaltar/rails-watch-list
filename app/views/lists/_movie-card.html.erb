@@ -1,0 +1,7 @@
+<div class="col-4 position-relative">
+  <%= image_tag bookmark.movie.poster_url, width: 200 %>
+  <p class="m-0"><%= bookmark.movie.title %></p>
+  <%= link_to(bookmark_path(bookmark), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"})  do %>
+    <i class="fa-solid fa-trash text-danger position-absolute top-0 m-1"></i>
+  <% end %>
+</div>

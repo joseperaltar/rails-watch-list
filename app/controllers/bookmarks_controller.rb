@@ -7,6 +7,8 @@ class BookmarksController < ApplicationController
     @bookmark = Bookmark.new(bookmark_params)
     @list = List.find(params[:list_id])
     @bookmark.list = @list
+    @reviews = @list.reviews
+    @review = Review.new
 
     @bookmark.save ? redirect_to(list_path(@list)) : render('lists/show', status: :unprocessable_entity)
   end

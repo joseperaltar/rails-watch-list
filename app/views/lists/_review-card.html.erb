@@ -1,0 +1,10 @@
+ <div class="d-flex flex-column align-items-start justify-content-between h-auto p-3 mb-3 shadow col-4 position-relative">
+  <div class="d-flex flex-column mb-3">
+    <span class="mb-3 text-wrap"><%= review.content %></span>
+    <span><%= "⭐" * review.rating  %></span>
+  </div>
+  <%= link_to(review_path(review), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "bg-danger border-0 p-2 text-decoration-none")  do %>
+    <i class="fa-solid fa-trash text-white"></i>
+    <span class="text-white">Delete review</span>
+  <% end %>
+</div>

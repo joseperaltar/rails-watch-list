@@ -5,15 +5,19 @@
       <button class="btn btn-success p-2 text-white fw-bold">Create a new movie list</button>
     <% end %>
   </div>
-  <% lists.each do |list| %>
-    <%= link_to list_path(list), class: "text-decoration-none" do %>
-      <div class="border border-1 shadow p-3 mt-3 d-flex justify-content-between align-items-center">
-        <span class="text-black"><%= list.name %></span>
-        <div>
-          <%= link_to "Delete", list_path(list), class: "btn btn-danger p-2 text-white border border-0 rounded", data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
-          <span class="btn bg-purple p-2 rounded text-white border border-0"><%= list.movies.size %> movie<%= list.movies.size == 1 ? "" : "s" %></span>
-        </div>
+  <div class="row my-5">
+    <% lists.each do |list| %>
+      <div class="col-4 position-relative list_banner_container">
+        <%= link_to list_path(list), class: "p-0" do %>
+          <div class="my-2 list_banner" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path list.photo.key, height: 300 %>')">
+            <h2 class="text-center text-white fw-bold position-absolute start-50 top-50 translate-middle"><%= list.name %></h2>
+          </div>
+        <% end %>
+        <%= link_to "Delete", list_path(list), class: "appear btn btn-danger mx-3 my-2 p-1 text-white border border-0 rounded position-absolute top-0 start-0", data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
+        <span class="appear btn bg-purple mx-3 my-2 p-1 rounded text-white border border-0 position-absolute top-0 end-0">
+          <%= list.movies.size %> movie<%= list.movies.size == 1 ? "" : "s" %>
+        </span>
       </div>
     <% end %>
-  <% end %>
+  </div>
 </div>
