@@ -3,7 +3,7 @@
   <div class="row">
     <div class="row mt-5 col-9">
       <% @list.bookmarks.each do |bookmark| %>
-        <div class="col-3 position-relative">
+        <div class="col-4 position-relative">
           <%= image_tag bookmark.movie.poster_url, class: "overlay" %>
           <p class="m-0"><%= bookmark.movie.title %></p>
           <%= link_to(bookmark_path(bookmark), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"})  do %>
@@ -23,12 +23,15 @@
 
   <hr>
 
-  <div class="row">
+  <h2 class="w-100 text-center">Leave a review about this list</h2>
+  <div class="row mt-5">
     <div class="col-9">
-
+      <% @reviews.each do |review| %>
+        <%= review.content %>
+      <% end %>
     </div>
     <div class="col-3">
-      <%= simple_form_for @review do |f| %>
+      <%= simple_form_for [@list, @review] do |f| %>
         <%= f.input :content %>
         <%= f.input :rating %>
         <%= f.submit class: "btn btn-success p-2 text-white fw-bold"%>
